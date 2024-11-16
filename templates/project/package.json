@@ -8,11 +8,11 @@
     "postinstall": "npm install axios sass"
   },
   "devDependencies": {
-    "vite": "^2.6.4",
-    "vite-plugin-string": "^1.0.0"
+    "vite": "latest",
+    "vite-plugin-string": "latest"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "vite-plugin-html": "^3.2.2"
+    "axios": "latest",
+    "vite-plugin-html": "latest"
   }
 }
