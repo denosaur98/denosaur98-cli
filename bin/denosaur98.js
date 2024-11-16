@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const { program } = require('commander')
 const fs = require('fs-extra')
 const path = require('path')
@@ -18,6 +16,26 @@ program
 
 		const templatePath = path.join(__dirname, '..', 'templates', 'project')
 		await fs.copy(templatePath, projectPath)
+
+		const assetsPath = path.join(projectPath, 'src', 'assets')
+		const imagesPath = path.join(assetsPath, 'images')
+		const iconsPath = path.join(assetsPath, 'icons')
+
+		await fs.ensureDir(imagesPath)
+		await fs.ensureDir(iconsPath)
+
+		const gitignorePath = path.join(projectPath, '.gitignore')
+		if (!fs.existsSync(gitignorePath)) {
+			const defaultGitignore = `
+				node_modules/
+				output/
+				dist/
+				.env
+				*.log
+				*.lock
+			`
+			await fs.writeFile(gitignorePath, defaultGitignore.trim())
+		}
 
 		process.chdir(projectPath)
 		execSync('npm install', { stdio: 'inherit' })
