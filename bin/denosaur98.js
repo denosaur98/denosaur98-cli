@@ -1,6 +1,9 @@
+#!/usr/bin/env node
+
 const { program } = require('commander')
 const fs = require('fs-extra')
 const path = require('path')
+const { execSync } = require('child_process')
 
 program
 	.command('create <project-name>')
@@ -15,6 +18,9 @@ program
 
 		const templatePath = path.join(__dirname, '..', 'templates', 'project')
 		await fs.copy(templatePath, projectPath)
+
+		process.chdir(projectPath)
+		execSync('npm install', { stdio: 'inherit' })
 
 		console.log(`Project "${projectName}" created successfully.`)
 	})
