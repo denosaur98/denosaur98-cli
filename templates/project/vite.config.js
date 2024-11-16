@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import { createHtmlPlugin } from 'vite-plugin-html'
+import stringPlugin from 'vite-plugin-string'
 
 export default defineConfig({
 	root: './src',
@@ -7,18 +9,26 @@ export default defineConfig({
 		outDir: '../output',
 		rollupOptions: {
 			input: {
-				main: resolve(__dirname, 'src/app.js'),
+				main: resolve(__dirname, 'src/app.html'),
 			},
 		},
 	},
 	server: {
 		port: 8080,
 	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: `@import "./src/styles/app.scss";`,
-			},
+	plugins: [
+		createHtmlPlugin({
+			minify: true,
+			entry: 'app.js',
+			template: 'app.html',
+		}),
+		stringPlugin({
+			include: '**/*.html',
+		}),
+	],
+	resolve: {
+		alias: {
+			'@': resolve(__dirname, './src'),
 		},
 	},
 })
