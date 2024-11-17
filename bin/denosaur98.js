@@ -22,9 +22,12 @@ program
 		const assetsPath = path.join(projectPath, 'src', 'assets')
 		const imagesPath = path.join(assetsPath, 'images')
 		const iconsPath = path.join(assetsPath, 'icons')
+		const stylesPath = path.join(projectPath, 'src', 'styles')
+		const fontsPath = path.join(stylesPath, 'fonts')
 
 		await fs.ensureDir(imagesPath)
 		await fs.ensureDir(iconsPath)
+		await fs.ensureDir(fontsPath)
 
 		const gitignorePath = path.join(projectPath, '.gitignore')
 		if (!fs.existsSync(gitignorePath)) {
