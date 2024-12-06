@@ -6,7 +6,7 @@ export default function Header() {
 		render(selector) {
 			const element = document.querySelector(selector)
 			if (element) {
-				element.innerHTML = template
+				element.outerHTML = template
 			}
 		},
 	}

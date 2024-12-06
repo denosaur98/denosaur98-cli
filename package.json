@@ -1,6 +1,6 @@
 {
   "name": "denosaur98-cli",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "CLI tool to create a new project",
   "bin": {
     "denosaur98": "./bin/denosaur98.js"
