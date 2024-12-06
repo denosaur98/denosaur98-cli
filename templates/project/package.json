@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "latest",
-    "vite-plugin-html": "latest"
+    "vite-plugin-html": "latest",
+    "swiper": "latest"
   }
 }
